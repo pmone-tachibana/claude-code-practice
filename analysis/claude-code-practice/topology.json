@@ -1,0 +1,509 @@
+{
+  "system": "claude-code-practice",
+  "root": {
+    "id": "sys",
+    "name": "claude-code-practice",
+    "kind": "system",
+    "children": [
+      {
+        "id": "dom:ui",
+        "name": "UI markup",
+        "kind": "domain",
+        "children": [
+          {
+            "id": "index.html",
+            "name": "index.html",
+            "kind": "module",
+            "language": "html",
+            "loc": 46,
+            "file": "index.html"
+          }
+        ]
+      },
+      {
+        "id": "dom:entry",
+        "name": "Entry point / event wiring",
+        "kind": "domain",
+        "children": [
+          {
+            "id": "mod:bootstrap",
+            "name": "bootstrap (top-level + event wiring)",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 35,
+            "file": "app.js"
+          }
+        ]
+      },
+      {
+        "id": "dom:rendering",
+        "name": "Rendering",
+        "kind": "domain",
+        "children": [
+          {
+            "id": "render",
+            "name": "render",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 150,
+            "file": "app.js:136-285"
+          }
+        ]
+      },
+      {
+        "id": "dom:state",
+        "name": "State & mutation",
+        "kind": "domain",
+        "children": [
+          {
+            "id": "addTodo",
+            "name": "addTodo",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 11,
+            "file": "app.js:40-50"
+          },
+          {
+            "id": "toggleTodo",
+            "name": "toggleTodo",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 8,
+            "file": "app.js:52-59"
+          },
+          {
+            "id": "deleteTodo",
+            "name": "deleteTodo",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 5,
+            "file": "app.js:61-65"
+          },
+          {
+            "id": "clearCompleted",
+            "name": "clearCompleted",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 5,
+            "file": "app.js:67-71"
+          },
+          {
+            "id": "editTodoText",
+            "name": "editTodoText",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 10,
+            "file": "app.js:73-82"
+          },
+          {
+            "id": "updatePriority",
+            "name": "updatePriority",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 8,
+            "file": "app.js:84-91"
+          },
+          {
+            "id": "updateDueDate",
+            "name": "updateDueDate",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 8,
+            "file": "app.js:93-100"
+          },
+          {
+            "id": "reorderTodo",
+            "name": "reorderTodo",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 10,
+            "file": "app.js:102-111"
+          },
+          {
+            "id": "getFilteredTodos",
+            "name": "getFilteredTodos",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 10,
+            "file": "app.js:113-122"
+          },
+          {
+            "id": "getTodayISO",
+            "name": "getTodayISO",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 3,
+            "file": "app.js:124-126"
+          },
+          {
+            "id": "getDueStatus",
+            "name": "getDueStatus",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 7,
+            "file": "app.js:128-134"
+          }
+        ]
+      },
+      {
+        "id": "dom:persistence",
+        "name": "Persistence",
+        "kind": "domain",
+        "children": [
+          {
+            "id": "loadTodos",
+            "name": "loadTodos",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 16,
+            "file": "app.js:19-34"
+          },
+          {
+            "id": "saveTodos",
+            "name": "saveTodos",
+            "kind": "module",
+            "language": "javascript",
+            "loc": 3,
+            "file": "app.js:36-38"
+          }
+        ]
+      },
+      {
+        "id": "dom:styling",
+        "name": "Styling",
+        "kind": "domain",
+        "children": [
+          {
+            "id": "style.css",
+            "name": "style.css",
+            "kind": "module",
+            "language": "css",
+            "loc": 302,
+            "file": "style.css"
+          }
+        ]
+      },
+      {
+        "id": "dom:data",
+        "name": "Data stores",
+        "kind": "domain",
+        "children": [
+          {
+            "id": "ds:todo-app-items",
+            "name": "todo-app.items (localStorage)",
+            "kind": "datastore"
+          }
+        ]
+      }
+    ]
+  },
+  "edges": [
+    {
+      "source": "addTodo",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "addTodo",
+      "target": "saveTodos",
+      "kind": "call"
+    },
+    {
+      "source": "clearCompleted",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "clearCompleted",
+      "target": "saveTodos",
+      "kind": "call"
+    },
+    {
+      "source": "deleteTodo",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "deleteTodo",
+      "target": "saveTodos",
+      "kind": "call"
+    },
+    {
+      "source": "editTodoText",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "editTodoText",
+      "target": "saveTodos",
+      "kind": "call"
+    },
+    {
+      "source": "getDueStatus",
+      "target": "getTodayISO",
+      "kind": "call"
+    },
+    {
+      "source": "loadTodos",
+      "target": "ds:todo-app-items",
+      "kind": "read"
+    },
+    {
+      "source": "mod:bootstrap",
+      "target": "addTodo",
+      "kind": "dispatch"
+    },
+    {
+      "source": "mod:bootstrap",
+      "target": "clearCompleted",
+      "kind": "dispatch"
+    },
+    {
+      "source": "mod:bootstrap",
+      "target": "loadTodos",
+      "kind": "call"
+    },
+    {
+      "source": "mod:bootstrap",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "mod:bootstrap",
+      "target": "render",
+      "kind": "dispatch"
+    },
+    {
+      "source": "render",
+      "target": "deleteTodo",
+      "kind": "dispatch"
+    },
+    {
+      "source": "render",
+      "target": "editTodoText",
+      "kind": "dispatch"
+    },
+    {
+      "source": "render",
+      "target": "getDueStatus",
+      "kind": "call"
+    },
+    {
+      "source": "render",
+      "target": "getFilteredTodos",
+      "kind": "call"
+    },
+    {
+      "source": "render",
+      "target": "reorderTodo",
+      "kind": "dispatch"
+    },
+    {
+      "source": "render",
+      "target": "toggleTodo",
+      "kind": "dispatch"
+    },
+    {
+      "source": "render",
+      "target": "updateDueDate",
+      "kind": "dispatch"
+    },
+    {
+      "source": "render",
+      "target": "updatePriority",
+      "kind": "dispatch"
+    },
+    {
+      "source": "reorderTodo",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "reorderTodo",
+      "target": "saveTodos",
+      "kind": "call"
+    },
+    {
+      "source": "saveTodos",
+      "target": "ds:todo-app-items",
+      "kind": "write"
+    },
+    {
+      "source": "toggleTodo",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "toggleTodo",
+      "target": "saveTodos",
+      "kind": "call"
+    },
+    {
+      "source": "updateDueDate",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "updateDueDate",
+      "target": "saveTodos",
+      "kind": "call"
+    },
+    {
+      "source": "updatePriority",
+      "target": "render",
+      "kind": "call"
+    },
+    {
+      "source": "updatePriority",
+      "target": "saveTodos",
+      "kind": "call"
+    },
+    {
+      "source": "index.html",
+      "target": "mod:bootstrap",
+      "kind": "call"
+    },
+    {
+      "source": "index.html",
+      "target": "style.css",
+      "kind": "call"
+    }
+  ],
+  "entryPoints": [
+    "index.html"
+  ],
+  "deadEnds": [],
+  "observations": [
+    "Single flat app.js with no modules — every 'domain' below is a functional grouping inside one file, not a separate deployable unit.",
+    "render() is the busiest node: it holds direct 'call' edges to the derived-state helpers (getFilteredTodos, getDueStatus, getTodayISO) and 'dispatch' edges to every mutator (toggleTodo, deleteTodo, editTodoText, updatePriority, updateDueDate, reorderTodo) via addEventListener closures rebuilt on every render — see Technical Debt #3-#5 in ASSESSMENT.md.",
+    "All state-changing functions funnel through the same two-step tail (saveTodos() -> localStorage write -> render()), so todo-app.items is a single-writer-many-callers datastore with no contention risk in this single-tab, single-user app.",
+    "mod:bootstrap (top-level script body + top-level addEventListener wiring) is the de facto entry point after index.html loads app.js; there is no other way into the program.",
+    "No true dead ends after resolving both direct calls and addEventListener dispatch targets (0 found) — confirms the prior /modernize-assess finding of no dangling references.",
+    "getTodayISO/getDueStatus are the only pure helper functions with no outbound edges to storage or DOM — natural first candidates if unit tests are ever added."
+  ],
+  "flows": [
+    {
+      "name": "タスクを追加する",
+      "persona": "アプリ利用者",
+      "description": "利用者がテキスト・優先度・期限日を入力してタスクを一覧に追加する。",
+      "steps": [
+        {
+          "label": "フォームに入力して送信",
+          "nodes": [
+            "index.html",
+            "mod:bootstrap"
+          ]
+        },
+        {
+          "label": "新しいタスクを配列に追加",
+          "nodes": [
+            "mod:bootstrap",
+            "addTodo"
+          ]
+        },
+        {
+          "label": "localStorageに保存",
+          "nodes": [
+            "addTodo",
+            "saveTodos",
+            "ds:todo-app-items"
+          ]
+        },
+        {
+          "label": "一覧を再描画",
+          "nodes": [
+            "addTodo",
+            "render"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "タスクを完了・削除する",
+      "persona": "アプリ利用者",
+      "description": "利用者がチェックボックスや削除ボタンで既存タスクを片付ける。",
+      "steps": [
+        {
+          "label": "チェックボックス/削除ボタンをクリック",
+          "nodes": [
+            "render",
+            "toggleTodo"
+          ]
+        },
+        {
+          "label": "状態を更新して保存",
+          "nodes": [
+            "toggleTodo",
+            "saveTodos",
+            "ds:todo-app-items"
+          ]
+        },
+        {
+          "label": "一覧を再描画（完了/削除を反映）",
+          "nodes": [
+            "toggleTodo",
+            "render"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "タスクをドラッグ&ドロップで並び替える",
+      "persona": "アプリ利用者",
+      "description": "利用者がタスクをドラッグして表示順を変更する。",
+      "steps": [
+        {
+          "label": "ドラッグ開始〜ドロップ",
+          "nodes": [
+            "render",
+            "reorderTodo"
+          ]
+        },
+        {
+          "label": "配列の順序を入れ替えて保存",
+          "nodes": [
+            "reorderTodo",
+            "saveTodos",
+            "ds:todo-app-items"
+          ]
+        },
+        {
+          "label": "新しい順序で再描画",
+          "nodes": [
+            "reorderTodo",
+            "render"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "タスクをその場で編集する",
+      "persona": "アプリ利用者",
+      "description": "利用者がタスクのテキストをダブルクリック（または✎ボタン）で直接編集する。",
+      "steps": [
+        {
+          "label": "ダブルクリック/編集ボタンで編集モードへ",
+          "nodes": [
+            "render"
+          ]
+        },
+        {
+          "label": "Enter/blurで保存を確定",
+          "nodes": [
+            "render",
+            "editTodoText"
+          ]
+        },
+        {
+          "label": "保存して再描画",
+          "nodes": [
+            "editTodoText",
+            "saveTodos",
+            "ds:todo-app-items",
+            "render"
+          ]
+        }
+      ]
+    }
+  ]
+}

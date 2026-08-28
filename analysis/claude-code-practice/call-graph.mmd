@@ -1,0 +1,23 @@
+graph TD
+  UI["UI markup<br/>index.html"]:::entry
+  ENTRY["Entry point / event wiring<br/>bootstrap (app.js top-level)"]
+  RENDER["Rendering<br/>render()"]
+  STATE["State & mutation<br/>addTodo / toggleTodo / deleteTodo /<br/>editTodoText / updatePriority /<br/>updateDueDate / reorderTodo / clearCompleted"]
+  PERSIST["Persistence<br/>loadTodos() / saveTodos()"]
+  STYLE["Styling<br/>style.css"]
+  DATA["Data stores<br/>localStorage: todo-app.items"]
+
+  UI -->|"loads script"| ENTRY
+  UI -->|"link rel=stylesheet"| STYLE
+  ENTRY -->|"call: loadTodos() at top level"| PERSIST
+  ENTRY -->|"call: render() at top level"| RENDER
+  ENTRY -.->|"dispatch: form submit / filter click"| STATE
+  ENTRY -.->|"dispatch: filter click re-renders"| RENDER
+  RENDER -->|"call: getFilteredTodos/getDueStatus"| STATE
+  RENDER -.->|"dispatch: checkbox/edit/delete/priority/<br/>due-date/drag listeners registered per render"| STATE
+  STATE -->|"call"| RENDER
+  STATE -->|"call"| PERSIST
+  PERSIST -->|"read"| DATA
+  PERSIST -->|"write"| DATA
+
+  classDef entry fill:#4361ee,color:#fff,stroke:#3448c5;
