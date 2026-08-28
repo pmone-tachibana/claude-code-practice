@@ -1,0 +1,10 @@
+graph TD
+  A["UI Markup<br/>index.html"] -->|loads script, provides DOM ids| F["Event Wiring / Entry Point<br/>app.js:287-309"]
+  F -->|calls addTodo/toggleTodo/deleteTodo/<br/>clearCompleted/reorderTodo| C["State & Mutation Logic<br/>app.js:5-8, 40-134"]
+  C -->|saveTodos/loadTodos| B["Persistence<br/>localStorage key todo-app.items<br/>app.js:1,19-38"]
+  C -->|triggers after every mutation| D["Rendering<br/>render() app.js:136-285"]
+  D -->|reads todos/currentFilter/editingId/draggedId| C
+  D -->|event listeners call back into| C
+  D -->|assigns classNames consumed by| E["Styling<br/>style.css"]
+  A -->|link rel=stylesheet| E
+  B -.->|JSON.parse failure silently swallowed| C

@@ -1,0 +1,12 @@
+%% Primary flow: "タスクを追加する" (アプリ利用者がタスクを追加する)
+%% No production telemetry exists for this local, client-only app
+%% (confirmed in /modernize-assess Step 4 — "Production Runtime Profile"
+%% was skipped for lack of any APM/telemetry source), so no p50/p99
+%% timing is annotated below.
+flowchart TD
+  A["利用者がフォームに入力して送信<br/>index.html #todo-form"] --> B["bootstrap: submit イベント発火<br/>app.js:287-296"]
+  B --> C["addTodo(text, priority, dueDate)<br/>app.js:40-50"]
+  C --> D["saveTodos()<br/>app.js:36-38"]
+  D --> E[("todo-app.items へ書き込み<br/>localStorage")]
+  C --> F["render()<br/>app.js:136-285"]
+  F --> G["#todo-list に新しい行を再描画"]

@@ -18,6 +18,12 @@
         autocomplete="off"
         required
       >
+      <select id="todo-priority" aria-label="優先度">
+        <option value="high">優先度: 高</option>
+        <option value="medium" selected>優先度: 中</option>
+        <option value="low">優先度: 低</option>
+      </select>
+      <input type="date" id="todo-due" aria-label="期限日">
       <button type="submit">追加</button>
     </form>
 

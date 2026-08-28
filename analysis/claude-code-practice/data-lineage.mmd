@@ -1,0 +1,13 @@
+graph LR
+  loadTodos["loadTodos()<br/>app.js:19-34"]
+  saveTodos["saveTodos()<br/>app.js:36-38"]
+  DATA[("todo-app.items<br/>(localStorage)")]
+
+  loadTodos -->|read| DATA
+  saveTodos -->|write| DATA
+
+  %% Every state-mutating function (addTodo, toggleTodo, deleteTodo,
+  %% clearCompleted, editTodoText, updatePriority, updateDueDate,
+  %% reorderTodo) calls saveTodos() as its last step before render() —
+  %% saveTodos() is the single writer, loadTodos() the single reader,
+  %% both funneling through the one localStorage key.
